@@ -34,3 +34,16 @@ d3.csv("Resources/../az_yelp_business.csv").then(function(data) {
 data.forEach(function(d) {
   d.amounts = +d.amounts;
 });
+
+// Scale the range of the data in the domains
+    x.domain(data.map(function(d) { return d.name; }));
+    y.domain([0, d3.max(data, function(d) { return d.amounts; })]);
+   // Append rectangles for bar chart
+   svg.selectAll(".bar")
+      .data(data)
+    .enter().append("rect")
+      .attr("class", "bar")
+      .attr("x", function(d) { return x(d.name); })
+      .attr("width", x.bandwidth())
+      .attr("y", function(d) { return y(d.amounts); })
+      .attr("height", function(d) { return height - y(d.amounts); });
