@@ -6,7 +6,15 @@ a.navbar-brand{
     font-family: 'Times New Roman', Times, serif;
     font-size: 25px;
 }
-
+img {
+    display: block;
+    margin-right: auto;
+    margin-left: auto;
+    height: 70px;
+}
+h3 {
+    text-align: center;
+}
 /*footer styling*/
 .page-footer{
     background-color: rgb(92, 90, 90);
