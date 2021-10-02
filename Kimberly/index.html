@@ -10,45 +10,48 @@
 <!-- load the d3.js library -->    	
 <script src="https://d3js.org/d3.v6.min.js"></script>
 <script>
-    // Set graph margins and dimensions
+
+// Set graph margins and dimensions
 var margin = {top: 20, right: 20, bottom: 30, left: 40},
     width = 960 - margin.left - margin.right,
     height = 500 - margin.top - margin.bottom;
-   // Set ranges
+
+// Set ranges
 var x = d3.scaleBand()
           .range([0, width])
           .padding(0.1);
 var y = d3.scaleLinear()
-          .range([height, 0]); 
+          .range([height, 0]);
 var svg = d3.select("body").append("svg")
     .attr("width", width + margin.left + margin.right)
     .attr("height", height + margin.top + margin.bottom)
   .append("g")
     .attr("transform", 
-          "translate(" + margin.left + "," + margin.top + ")")
+          "translate(" + margin.left + "," + margin.top + ")");
 
-          // Get data
-d3.csv("../Resources/../az_yelp_business.csv").then(function(data) {
+// Get data
+d3.csv("az_yelp_restaurants.csv").then(function(data) {
 
-// Format
-data.forEach(function(d) {
-  d.amounts = +d.amounts;
-});
+  // Format data
+  data.forEach(function(d) {
+    d.stars = +d.stars;
+  });
 
-// Scale the range of the data in the domains
-    x.domain(data.map(function(d) { return d.name; }));
-    y.domain([0, d3.max(data, function(d) { return d.amounts; })]);
-   // Append rectangles for bar chart
-   svg.selectAll(".bar")
+  // Scale the range of the data in the domains
+  x.domain(data.map(function(d) { return d.city; }));
+  y.domain([0, d3.max(data, function(d) { return d.stars; })]);
+
+  // Append rectangles for bar chart
+  svg.selectAll(".bar")
       .data(data)
     .enter().append("rect")
       .attr("class", "bar")
-      .attr("x", function(d) { return x(d.name); })
+      .attr("x", function(d) { return x(d.city); })
       .attr("width", x.bandwidth())
-      .attr("y", function(d) { return y(d.amounts); })
-      .attr("height", function(d) { return height - y(d.amounts); });
+      .attr("y", function(d) { return y(d.stars); })
+      .attr("height", function(d) { return height - y(d.stars); });
 
-     // Add x axis
+  // Add x axis
   svg.append("g")
       .attr("transform", "translate(0," + height + ")")
       .call(d3.axisBottom(x));
