@@ -3,6 +3,9 @@
 <style type="text/css"> /* set the CSS */
 
 .bar { fill: steelblue; }
+  .bar:hover {
+    fill: pink;
+  }
 
 
 </style>
@@ -69,14 +72,51 @@ d3.csv("az_yelp_restaurants.csv").then(function(data) {
   svg.append("g")
       .attr("class", "axis axis--y")
       .call(d3.axisLeft(y))
-    .append("text")
-      .attr("class", "axis-title")
-      .attr("transform", "rotate(-90)")
-      .attr("y", 6)
-      .attr("dy", ".71em")
-      .style("text-anchor", "end")
-      .attr("fill", "#5D6971")
-      .text("Star Review");
+    
+tooltip = d3.select("body")
+      .append("div")
+      .style("position", "absolute")
+      .style("font-family", "'Open Sans', sans-serif")
+      .style("font-size", "15px")
+      .style("z-index", "10")
+      .style("background-color", "#A7CDFA")
+      .style("color", "#B380BA")
+      .style("border", "solid")
+      .style("border-color", "#A89ED6")
+      .style("padding", "5px")
+      .style("border-radius", "2px")
+      .style("visibility", "hidden");
+
+    tooltip;
+    
+  svg.append("g")
+  .selectAll("rect")
+  .data(data)
+  .enter().append("rect")
+    .attr('x', d => x(d.city))
+    .attr('y', d => y(d.stars))
+    .attr('width', x.bandwidth())
+    .attr('height', d => y(0) - y(d.stars))
+    .style("padding", "3px")
+    .style("margin", "1px")
+    .style("width", d => `${d * 10}px`)
+    .text(d => d)
+    .attr("fill", "#CEBEDE")
+    .attr("class", "bar");
+    // .attr("stroke", "#FFB9EC")
+  //   .attr("stroke-width", 1)
+  // .on("mouseover", function(d) {
+  //     tooltip.style("visibility", "visible").text(d.city + ": " + d.stars);
+  //     d3.select(this).attr("fill", "#FDE5BD");
+  //   })
+  //   .on("mousemove", d => tooltip.style("top", (d3.event.pageY-10)+"px").style("left",(d3.event.pageY+10)+"px").text(d.city + ": " + d.stars)
+  //   .on("mouseout", function(d) {
+  //     tooltip.style("visibility", "hidden");
+  //     d3.select(this)
+  //   .attr("fill", "#CEBEDE")
+    });
+
+
 
 // bar chart title
    svg.append("text")
@@ -102,7 +142,10 @@ d3.csv("az_yelp_restaurants.csv").then(function(data) {
         .attr("dy", "1em")
         .style("text-anchor", "middle")
         .text("Star Reviews");
-});
+
+  
+
+;
 
 </script>
 </body>
