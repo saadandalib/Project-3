@@ -1,8 +1,9 @@
 <!DOCTYPE html>
 <meta charset="utf-8">
-<style> /* set the CSS */
+<style type="text/css"> /* set the CSS */
 
 .bar { fill: steelblue; }
+
 
 </style>
 <body>
@@ -12,7 +13,7 @@
 <script>
 
 // Set graph margins and dimensions
-var margin = {top: 20, right: 20, bottom: 70, left: 40},
+var margin = {top: 40, right: 20, bottom: 100, left: 70},
     width = 960 - margin.left - margin.right,
     height = 500 - margin.top - margin.bottom;
 
@@ -54,21 +55,30 @@ d3.csv("az_yelp_restaurants.csv").then(function(data) {
 
   // Add x axis
   svg.append("g")
-      .attr("class", "x axis")
+      .attr("class", "x axis--x")
       .attr("transform", "translate(0," + height + ")")
       .call(d3.axisBottom(x))
       .selectAll("text")  
             .style("text-anchor", "end")
             .attr("dx", "-.8em")
             .attr("dy", ".15em")
-            .attr("transform", "rotate(-65)" );
+            .attr("transform", "rotate(-90)" );
   
 
   // Add y axis
   svg.append("g")
-      .call(d3.axisLeft(y));
+      .attr("class", "axis axis--y")
+      .call(d3.axisLeft(y))
+    .append("text")
+      .attr("class", "axis-title")
+      .attr("transform", "rotate(-90)")
+      .attr("y", 6)
+      .attr("dy", ".71em")
+      .style("text-anchor", "end")
+      .attr("fill", "#5D6971")
+      .text("Star Review");
 
-
+// bar chart title
    svg.append("text")
         .attr("x", (width / 2))             
         .attr("y", 0 - (margin.top / 4))
@@ -77,6 +87,21 @@ d3.csv("az_yelp_restaurants.csv").then(function(data) {
         .style("text-decoration", "underline") 
         .attr("class", "shadow") 
         .text("Star reviews based on Cities in AZ");
+
+     // Add the text label for the x axis
+     svg.append("text")
+        .attr("transform", "translate(" + (width / 2) + " ," + (height + margin.bottom) + ")")
+        .style("text-anchor", "middle")
+        .text("Cities in AZ");
+
+    // Add the text label for the Y axis
+    svg.append("text")
+        .attr("transform", "rotate(-90)")
+        .attr("y", 0 - margin.left)
+        .attr("x",0 - (height / 2))
+        .attr("dy", "1em")
+        .style("text-anchor", "middle")
+        .text("Star Reviews");
 });
 
 </script>
