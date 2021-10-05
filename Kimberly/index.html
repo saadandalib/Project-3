@@ -1,9 +1,10 @@
 <!DOCTYPE html>
+<html>
 <meta charset="utf-8">
 <style type="text/css"> /* set the CSS */
 
 .bar { fill: steelblue; }
-  .bar:hover {
+  .highlight {
     fill: pink;
   }
 
@@ -51,9 +52,17 @@ d3.csv("az_yelp_restaurants.csv").then(function(data) {
       .data(data)
     .enter().append("rect")
       .attr("class", "bar")
+      .on("mouseover", onMouseOver)
+      .on("mouseout", onMouseOut)
       .attr("x", function(d) { return x(d.city); })
       .attr("width", x.bandwidth())
       .attr("y", function(d) { return y(d.stars); })
+      .transition()
+         .ease(d3.easeLinear)
+         .duration(400)
+        //  .delay(function (d, i) {
+        //      return i * 50;
+        //  })
       .attr("height", function(d) { return height - y(d.stars); });
 
   // Add x axis
@@ -67,42 +76,82 @@ d3.csv("az_yelp_restaurants.csv").then(function(data) {
             .attr("dy", ".15em")
             .attr("transform", "rotate(-90)" );
   
+//mouseover event handler function
+function onMouseOver(d) {
+        d3.select(this).attr('class', 'highlight');
+        d3.select(this)
+          .transition()     // adds animation
+          // .duration(400)
+          .attr('width', x.bandwidth() + 5)
+          .attr("y", function(d) { return y(d.stars) - 10; })
+          .attr("height", function(d) { return height - y(d.stars) + 10; });
+
+        svg.append("text")
+         .attr('class', 'val') 
+         .attr("x", function() {
+             return x(d.city);
+         })
+         .attr("y", function() {
+             return y(d.stars);
+         })
+         .text(function() {
+             return [d.stars]  // Value of the text
+         });
+    }
+
+    // mouseout event handler function
+    function onMouseOut(d) {
+        // use the text label class to remove label on mouseout
+        d3.select(this).attr('class', 'bar');
+        d3.select(this)
+          .transition()     // adds animation
+          // .duration(400)
+          .attr('width', x.bandwidth())
+          .attr("y", function(d) { return y(d.stars); })
+          .attr("height", function(d) { return height - y(d.stars); });
+
+        d3.selectAll('.val')
+          .remove()
+    }
+
 
   // Add y axis
   svg.append("g")
       .attr("class", "axis axis--y")
-      .call(d3.axisLeft(y))
+      .call(d3.axisLeft(y).tickFormat(function(d){
+             return d;
+         }).ticks(10))
     
-tooltip = d3.select("body")
-      .append("div")
-      .style("position", "absolute")
-      .style("font-family", "'Open Sans', sans-serif")
-      .style("font-size", "15px")
-      .style("z-index", "10")
-      .style("background-color", "#A7CDFA")
-      .style("color", "#B380BA")
-      .style("border", "solid")
-      .style("border-color", "#A89ED6")
-      .style("padding", "5px")
-      .style("border-radius", "2px")
-      .style("visibility", "hidden");
+// tooltip = d3.select("body")
+//       .append("div")
+//       .style("position", "absolute")
+//       .style("font-family", "'Open Sans', sans-serif")
+//       .style("font-size", "15px")
+//       .style("z-index", "10")
+//       .style("background-color", "#A7CDFA")
+//       .style("color", "#B380BA")
+//       .style("border", "solid")
+//       .style("border-color", "#A89ED6")
+//       .style("padding", "5px")
+//       .style("border-radius", "2px")
+//       .style("visibility", "hidden");
 
-    tooltip;
+//     tooltip;
     
-  svg.append("g")
-  .selectAll("rect")
-  .data(data)
-  .enter().append("rect")
-    .attr('x', d => x(d.city))
-    .attr('y', d => y(d.stars))
-    .attr('width', x.bandwidth())
-    .attr('height', d => y(0) - y(d.stars))
-    .style("padding", "3px")
-    .style("margin", "1px")
-    .style("width", d => `${d * 10}px`)
-    .text(d => d)
-    .attr("fill", "#CEBEDE")
-    .attr("class", "bar");
+//   svg.append("g")
+//   .selectAll("rect")
+//   .data(data)
+//   .enter().append("rect")
+//     .attr('x', d => x(d.city))
+//     .attr('y', d => y(d.stars))
+//     .attr('width', x.bandwidth())
+//     .attr('height', d => y(0) - y(d.stars))
+//     .style("padding", "3px")
+//     .style("margin", "1px")
+//     .style("width", d => `${d * 10}px`)
+//     .text(d => d)
+//     .attr("fill", "#CEBEDE")
+//     .attr("class", "bar");
     // .attr("stroke", "#FFB9EC")
   //   .attr("stroke-width", 1)
   // .on("mouseover", function(d) {
@@ -149,3 +198,4 @@ tooltip = d3.select("body")
 
 </script>
 </body>
+</html>
