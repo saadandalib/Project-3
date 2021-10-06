@@ -1,8 +1,12 @@
+// call bar chart
+var barchart ="bar"
+// set margins
 var svg = d3.select("svg"),
         margin =200,
         width = svg.attr("width") - margin,
         height = svg.attr("height") - margin;
 
+// Bar Title 
     svg.append("text")
        .attr("transform", "translate(10,0)")
        .attr("text-anchor", "middle") 
@@ -21,7 +25,7 @@ var svg = d3.select("svg"),
 
  
     // Get Data
-    d3.csv("az_yelp_restaurants.csv", function(error, data) {
+    d3.csv("/../Resources/../az_yelp_restaurants.csv", function(error, data) {
         if (error) {
             throw error;
         }
