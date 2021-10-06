@@ -63,8 +63,8 @@ function createMap(data) {
     };
 
     var map = L.map("map-restaurants", {
-        center: [34.495003753458036, -111.71943620954704],
-        zoom: 8,
+        center: [33.495003753458036, -111.71943620954704],
+        zoom: 10,
         layers: [streetmap, rating_1]
     });
 
