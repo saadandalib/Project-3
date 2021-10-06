@@ -1,4 +1,8 @@
-function createMap(r1,r2,r3,r4,r5) {
+
+d3.json("/Resources/az_yelp_restaurants.json").then(createMap);
+
+
+function createMap(data) {
 
     var streetmap = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
         attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
@@ -8,35 +12,6 @@ function createMap(r1,r2,r3,r4,r5) {
     var baseMaps = {
         "Street Map": streetmap
     };
-    
-    var rating_1 = L.layerGroup(r1);
-    var rating_2 = L.layerGroup(r2);
-    var rating_3 = L.layerGroup(r3);
-    var rating_4 = L.layerGroup(r4);
-    var rating_5 = L.layerGroup(r5);
-
-    var overlayMaps = {
-        "Rating 1": rating_1,
-        "Rating 2": rating_2,
-        "Rating 3": rating_3,
-        "Rating 4": rating_4,
-        "Rating 5": rating_5,
-    };
-
-    var map = L.map("map-restaurants", {
-        center: [34.495003753458036, -111.71943620954704],
-        zoom: 8,
-        layers: [streetmap, r1]
-    });
-
-    L.control.layers(baseMaps, overlayMaps, {
-        collapsed: false
-    }).addTo(map);
-}
-
-
-
-function createMarkers(data) {
 
     var single_data = data;
     var restaurantMarkers = [];
@@ -73,12 +48,27 @@ function createMarkers(data) {
 }
         restaurantMarkers.push(restaurantMarker);
     }
-    createMap(L.layerGroup(rating1));
-    
+    var rating_1 = L.layerGroup(rating1);
+    var rating_2 = L.layerGroup(rating2);
+    var rating_3 = L.layerGroup(rating3);
+    var rating_4 = L.layerGroup(rating4);
+    var rating_5 = L.layerGroup(rating5);
 
+    var overlayMaps = {
+        "Rating 1": rating_1,
+        "Rating 2": rating_2,
+        "Rating 3": rating_3,
+        "Rating 4": rating_4,
+        "Rating 5": rating_5,
+    };
+
+    var map = L.map("map-restaurants", {
+        center: [34.495003753458036, -111.71943620954704],
+        zoom: 8,
+        layers: [streetmap, rating_1]
+    });
+
+    L.control.layers(baseMaps, overlayMaps, {
+        collapsed: false
+    }).addTo(map);
 }
-
-
-
-
-d3.json("/Resources/az_yelp_restaurants.json").then(createMarkers);
