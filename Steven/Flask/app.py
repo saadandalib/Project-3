@@ -9,7 +9,7 @@ from IPython.display import HTML
 
 rds_connection_string = "postgres:postgres@localhost:5432/restaurants_db"
 engine = create_engine(f'postgresql://{rds_connection_string}')
-topten_data = pd.read_sql_query('select * from restaurants', con=engine)
+topten_data = pd.read_sql_query('select * from topten', con=engine)
 restaurant_data = pd.read_sql_query('select * from az_restaurants', con=engine)
 
 # Create an instance of Flask

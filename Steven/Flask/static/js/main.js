@@ -106,7 +106,7 @@ var icons = {
     })
 };
 
-const file = "/templates/az_yelp_restaurants.json"
+const file = "/static/data/az_yelp_restaurants.json"
 
 d3.json(file).then(function(data) {
     var markerCount = {
