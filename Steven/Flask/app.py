@@ -7,21 +7,19 @@ import pandas as pd
 from IPython.display import HTML
 
 
-# import pymongo
-
-
 rds_connection_string = "postgres:postgres@localhost:5432/restaurants_db"
 engine = create_engine(f'postgresql://{rds_connection_string}')
-data = pd.read_sql_query('select * from restaurants', con=engine)
+topten_data = pd.read_sql_query('select * from restaurants', con=engine)
+restaurant_data = pd.read_sql_query('select * from az_restaurants', con=engine)
 
 # Create an instance of Flask
 app = Flask(__name__)
 
-# Route to render index.html template using data from Mongo
+# Route to render index.html template 
 @app.route("/")
 def home():
 
-    data_html = HTML(data.to_html(index=False,classes='table table-dark table-striped'))
+    data_html = HTML(topten_data.to_html(index=False,classes='table table-dark table-striped'))
     
     # Return template and data
     return render_template("/index.html", topten = data_html)
