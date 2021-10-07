@@ -15,8 +15,8 @@ var layers = {
   };
 
 var map = L.map("map-restaurants", {
-    center: [34.495003753458036, -111.71943620954704],
-    zoom: 8,
+    center: [33.485685442692514, -112.051555006106],
+    zoom: 11,
     layers: [
         layers.ONE_STAR,
     ]
