@@ -4,6 +4,7 @@ from sqlalchemy import create_engine
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy import Column, Integer, String, Float 
 import pandas as pd
+from IPython.display import HTML
 
 
 # import pymongo
@@ -20,7 +21,7 @@ app = Flask(__name__)
 @app.route("/")
 def home():
 
-    data_html = data.to_html(index=False)
+    data_html = HTML(data.to_html(index=False,classes='table table-dark table-striped'))
     
     # Return template and data
     return render_template("/index.html", topten = data_html)
