@@ -41,6 +41,7 @@ h3{
     display: block;
     margin-left: auto;
     margin-right: auto;
+    
 }
 
 /* fontstyling for text*/
@@ -206,3 +207,4 @@ tr>td:nth-child(10) {
     .highlight {
         fill: rgb(43, 255, 0);
     }
+ 

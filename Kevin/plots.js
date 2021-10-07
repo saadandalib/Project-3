@@ -1,6 +1,6 @@
 // Use d3 to read the JSON file.
 // The data from the JSON file is arbitrarily named importedData as the argument.
-d3.json("az_yelp_restaurants.json", function (error, importedData)  {
+d3.json("az_yelp_restaurants.json", function (importedData)  {
     console.log(importedData);
     var data = importedData;
     y= [1, 2, 3, 4, 5]
