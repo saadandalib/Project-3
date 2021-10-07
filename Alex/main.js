@@ -164,7 +164,7 @@ d3.json(file).then(function(data) {
 
         newMarker.addTo(layers[starRatingCode]);
 
-        newMarker.bindPopup("<h3>" + restaurants.name + "<h3><h3>Address: " + restaurants.address +", " + restaurants.city + ", " + restaurants.state + " " + restaurants.postal_code + "</h3>" + "<h3>Review Count: " + restaurants.review_count + "</h3>" + "<h3>Category: " + restaurants.categories + "</h3>");
+        newMarker.bindPopup("<h3>" + restaurants.name + "<h3><h3>Address: " + restaurants.address +", " + restaurants.city + ", " + restaurants.state + " " + restaurants.postal_code + "</h3>" + "<h3>Review Count: " + restaurants.review_count + "</h3>" + "<h3>Categories: " + restaurants.categories + "</h3>");
     }
     updateLegend(markerCount);
 });
