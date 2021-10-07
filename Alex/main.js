@@ -19,14 +19,6 @@ var map = L.map("map-restaurants", {
     zoom: 8,
     layers: [
         layers.ONE_STAR,
-        layers.ONE_HALF_STAR,
-        layers.TWO_STAR,
-        layers.TWO_HALF_STAR,
-        layers.THREE_STAR,
-        layers.THREE_HALF_STAR,
-        layers.FOUR_STAR,
-        layers.FOUR_HALF_STAR,
-        layers.FIVE_STAR
     ]
 });
 
