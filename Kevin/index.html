@@ -67,25 +67,97 @@
     
     <div class="container content"> 
         <div class="row">
-            <div class="col-sm-3">
-                    <h3>bar chart</h3>
-                    <hr>
+            <div class="col-md-6" id="plot">
+                    <!-- <h3>bar chart</h3>
+                    <hr> -->
                   </div>
              
-                      <div class="col-sm-3">
-                          <h3>bubble</h3>
-                          <hr>
+                      <div class="col-md-6" id="plot1">
+                          
                   </div>
-             
-                    <div class="col-sm-3">
-                        <h3>Visualizations3</h3>
-                        <hr>
-                </div>
-                
-                    <div class="col-sm-3">
-                        <h3>Visualizations4</h3>
-                        <hr> 
           </div>
+          <div class="container content"> 
+            <div class="row">
+                <div class="col-md-6">
+                    <table border="1" class="table table-dark table-striped">
+                        <thead>
+                          <tr style="text-align: right;">
+                            <th>Categories</th>
+                            <th>Categories Total</th>
+                            <th>Restaurants</th>
+                            <th>Restaurant Total</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr>
+                            <td>American</td>
+                            <td>5154</td>
+                            <td>Pizzeria Bianco</td>
+                            <td>2035</td>
+                          </tr>
+                          <tr>
+                            <td>Italian</td>
+                            <td>1427</td>
+                            <td>Four Peaks Brewing</td>
+                            <td>1965</td>
+                          </tr>
+                          <tr>
+                            <td>Mexican</td>
+                            <td>1390</td>
+                            <td>Bobby Q</td>
+                            <td>1940</td>
+                          </tr>
+                          <tr>
+                            <td>Chinese</td>
+                            <td>567</td>
+                            <td>Lux Central</td>
+                            <td>1770</td>
+                          </tr>
+                          <tr>
+                            <td>Japanese</td>
+                            <td>353</td>
+                            <td>Rehab Burger Therapy</td>
+                            <td>1724</td>
+                          </tr>
+                          <tr>
+                            <td>Mediterranean</td>
+                            <td>259</td>
+                            <td>Cibo</td>
+                            <td>1698</td>
+                          </tr>
+                          <tr>
+                            <td>Thai</td>
+                            <td>142</td>
+                            <td>La Santisima</td>
+                            <td>1694</td>
+                          </tr>
+                          <tr>
+                            <td>Indian</td>
+                            <td>114</td>
+                            <td>The Mission Old Town</td>
+                            <td>1659</td>
+                          </tr>
+                          <tr>
+                            <td>Vietnamese</td>
+                            <td>111</td>
+                            <td>Joe's Farm Grill</td>
+                            <td>1644</td>
+                          </tr>
+                          <tr>
+                            <td>Hawaiian</td>
+                            <td>56</td>
+                            <td>Citizen Public House</td>
+                            <td>1550</td>
+                          </tr>
+                        </tbody>
+                      </table>
+                        
+                      </div>
+                 
+                          <!-- <div class="col-md-6" id="plot1"> -->
+                              
+                      </div>
+              </div>
             
 
             
@@ -105,8 +177,20 @@
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.3/dist/leaflet.css"
   integrity="sha512-Rksm5RenBEKSKFjgI3a41vrjkw4EVPlJ3+OiI65vTjIdo9brlAacEuKOiQ5OFh7cOI1bkDwLqdLw3Zg0cRJAAQ=="
   crossorigin=""/>
-
-  <script type="text/javascript" src="restaurant_map.js"></script>
+  <!-- Icons -->
+  <script src="leaflet.extra-markers.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+  <!-- <link rel="stylesheet" href="leaflet.extra-markers.min.css"> -->
+  <!-- MomentJS -->
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.15.1/moment.min.js"></script>
+   <!-- polyfill.io is the library for using newer JavaScript features (such as Object.assign) in older browers. -->
+   <script src="https://cdn.polyfill.io/v2/polyfill.min.js"></script>
+   <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+  <!-- <script type="text/javascript" src="restaurant_map.js"></script> -->
+  <script type="text/javascript" src="main.js"></script>
+  <script type="text/javascript" src="logic.js"></script>
+  <script type="text/javascript" src="plot.js"></script>
+  <script type="text/javascript" src="plots.js"></script>
     <footer class="page-footer font-small footer-dark">
               
     </footer>
