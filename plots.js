@@ -1,6 +1,6 @@
 // Use d3 to read the JSON file.
 // The data from the JSON file is arbitrarily named importedData as the argument.
-d3.json("az_yelp_restaurants.json").then(function (importedData) {
+d3.json("Resources/az_yelp_restaurants.json").then(function (importedData) {
   var data = importedData;
   y = [1, 2, 3, 4, 5]
   var sorted_data = data.sort(function (a, b) {
