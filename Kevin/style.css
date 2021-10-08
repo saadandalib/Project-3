@@ -178,27 +178,27 @@ tr>td:nth-child(10) {
       }
       
       .legend .three-star {
-        color:rgb(161, 138, 2);
+        color:lightgreen;
         
       }
       
       .legend .three-half-star {
-        color: lightgreen;
-        
-      }
-      
-      .legend .four-star {
         color: green;
         
       }
       
-      .legend .four-half-star {
+      .legend .four-star {
         color: cyan;
         
       }
       
-      .legend .five-star {
+      .legend .four-half-star {
         color: blue;
+        
+      }
+      
+      .legend .five-star {
+        color: purple;
         
       }
       .bar {

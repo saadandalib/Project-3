@@ -77,31 +77,31 @@ var icons = {
     THREE_STAR: L.ExtraMarkers.icon({
         icon: "ion-minus-circled",
         iconColor: "white",
-        markerColor: "yellow",
+        markerColor: "green-light",
         shape: "circle"
     }),
     THREE_HALF_STAR: L.ExtraMarkers.icon({
         icon: "ion-minus-circled",
         iconColor: "white",
-        markerColor: "green-light",
+        markerColor: "green",
         shape: "circle"
     }),
     FOUR_STAR: L.ExtraMarkers.icon({
         icon: "ion-minus-circled",
         iconColor: "white",
-        markerColor: "green",
+        markerColor: "cyan",
         shape: "circle"
     }),
     FOUR_HALF_STAR: L.ExtraMarkers.icon({
         icon: "ion-minus-circled",
         iconColor: "white",
-        markerColor: "cyan",
+        markerColor: "blue",
         shape: "circle"
     }),
     FIVE_STAR: L.ExtraMarkers.icon({
         icon: "ion-minus-circled",
         iconColor: "white",
-        markerColor: "blue",
+        markerColor: "purple",
         shape: "circle"
     })
 };
