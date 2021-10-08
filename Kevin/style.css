@@ -68,7 +68,7 @@ body{
     padding-top: 20px;
     padding-bottom:40px;
     height: 750px;
-    
+
 }
 
 /* image border styling*/
@@ -178,7 +178,7 @@ tr>td:nth-child(10) {
       }
       
       .legend .three-star {
-        color:yellow;
+        color:rgb(161, 138, 2);
         
       }
       
