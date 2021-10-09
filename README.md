@@ -15,6 +15,9 @@ Using leaflet we created a geomap based on restaurants and created a filter over
 ### Resources
 In the *Resources Folder*, we have our notebooks on how we cleaned the data and loaded the data into the database. We have csv and json files.
 
-
 ### Presentation
 In the *Presentation Folder*, we have our presentation slide deck.
+
+### Website
+Our website can be found at this link:
+https://saadandalib.github.io/Project-3/
